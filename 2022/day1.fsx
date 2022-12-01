@@ -2269,7 +2269,16 @@ open System
 let sum =
     input.Split("\r\n\r\n")
     |> Array.map (fun str -> str.Split('\n'))
-    |> Array.map (fun arr -> arr |> Array.map int |> Array.reduce (+))
+    |> Array.map (fun arr ->
+        arr
+        |> Array.mapFold
+            (fun acc str ->
+                let i = str |> int
+                i, acc + i)
+            0)
+    |> Array.unzip
+    |> snd
+
 
 let ans1 = sum |> Array.max
 
