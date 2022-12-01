@@ -2264,8 +2264,6 @@ let input =
 
 open System
 
-// Q1
-
 let sum =
     input.Split("\r\n\r\n")
     |> Array.map (fun str -> str.Split('\n'))
@@ -2279,6 +2277,7 @@ let sum =
     |> Array.unzip
     |> snd
 
+// Q1
 
 let ans1 = sum |> Array.max
 
