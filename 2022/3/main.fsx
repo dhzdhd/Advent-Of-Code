@@ -331,8 +331,7 @@ let parseSecond (input: string) =
     |> Array.filter ((<>) None)
     |> Array.map (fun lst ->
         Set.intersectMany (lst.Value |> List.map (fun x -> Set(x.Trim())))
-        |> Set.toArray
-        |> Array.head)
+        |> Seq.head)
     |> Array.map (fun chr ->
         match chr with
         | x when x |> Char.IsLower -> int x - 96
