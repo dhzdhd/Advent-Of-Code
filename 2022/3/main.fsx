@@ -309,8 +309,7 @@ let array = input.Split "\n"
 let parseFirst (input: string) =
     array
     |> Array.map (fun x -> x[0 .. x.Length / 2 - 1], x[x.Length / 2 .. x.Length])
-    |> Array.map (fun (arr1, arr2) -> Set.ofArray (arr1.ToCharArray()), Set.ofArray (arr2.ToCharArray()))
-    |> Array.map (fun (x, y) -> ((Set.intersect x y) |> Set.toArray)[0])
+    |> Array.map (fun (arr1, arr2) -> (Set arr1, Set arr2) ||> Set.intersect |> Seq.head)
     |> Array.map (fun arr ->
         match arr with
         | x when x |> Char.IsLower -> int x - 96
@@ -329,7 +328,7 @@ let parseSecond (input: string) =
             | _ -> None, arr :: state)
         []
     |> fst
-    |> Array.filter (fun x -> x <> None)
+    |> Array.filter ((<>) None)
     |> Array.map (fun lst ->
         Set.intersectMany (lst.Value |> List.map (fun x -> Set(x.Trim())))
         |> Set.toArray
