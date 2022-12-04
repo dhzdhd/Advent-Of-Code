@@ -1017,12 +1017,8 @@ let ans1 () =
 
 let ans2 () =
     parsedInput input
-    |> Array.fold
-        (fun acc (set1, set2) ->
-            match set1, set2 with
-            | set1, set2 when (set1 |> Set.intersect set2).Count <> 0 -> acc + 1
-            | _ -> acc)
-        0
+    |> Array.filter (fun (set1, set2) -> (set1 |> Set.intersect set2).Count <> 0)
+    |> Array.length
 
 printfn $"{ans1 ()}"
 printfn $"{ans2 ()}"
