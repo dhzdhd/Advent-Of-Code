@@ -1016,9 +1016,8 @@ let ans1 () =
         0
 
 let ans2 () =
-    parsedInput input
-    |> Array.filter (fun (set1, set2) -> (set1 |> Set.intersect set2).Count <> 0)
-    |> Array.length
+    ((Array.filter (fun (a, b) -> (Set.intersect a b).Count <> 0))
+     >> Array.length) (parsedInput input)
 
 printfn $"{ans1 ()}"
 printfn $"{ans2 ()}"
