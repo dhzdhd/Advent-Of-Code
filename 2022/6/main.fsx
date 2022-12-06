@@ -3,7 +3,6 @@ let input =
 
 let ans size =
     input
-    |> List.ofSeq
     |> Seq.windowed size
     |> Seq.findIndex (fun ele -> (ele |> Array.distinct) = ele)
     |> (+) size
