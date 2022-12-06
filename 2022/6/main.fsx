@@ -6,7 +6,7 @@ let ans size =
     |> List.ofSeq
     |> Seq.windowed size
     |> Seq.findIndex (fun ele -> (ele |> Array.distinct) = ele)
-    |> (+) 14
+    |> (+) size
 
 printfn $"%A{ans 4}"
 printfn $"%A{ans 14}"
