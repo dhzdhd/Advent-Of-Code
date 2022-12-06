@@ -505,15 +505,16 @@ move 1 from 5 to 9"""
 open System.Text.RegularExpressions
 
 let stackMap =
-    Map.ofList [ 1, "SPHVFG" |> Seq.toList
-                 2, "MZDVBFJG" |> Seq.toList
-                 3, "NJLMG" |> Seq.toList
-                 4, "PWDVZGN" |> Seq.toList
-                 5, "BCRV" |> Seq.toList
-                 6, "ZLWPMSRV" |> Seq.toList
-                 7, "PHT" |> Seq.toList
-                 8, "VZHCNSRQ" |> Seq.toList
-                 9, "JQVPGLF" |> Seq.toList ]
+    Map.ofList [ 1, "SPHVFG"
+                 2, "MZDVBFJG"
+                 3, "NJLMG"
+                 4, "PWDVZGN"
+                 5, "BCRV"
+                 6, "ZLWPMSRV"
+                 7, "PHT"
+                 8, "VZHCNSRQ"
+                 9, "JQVPGLF" ]
+    |> Map.map (fun key value -> value |> Seq.toList)
 
 type Part =
     | One
@@ -553,6 +554,10 @@ let ans part =
                 .Change(moveArr[1], (fun _ -> Some src))
                 .Change(moveArr[2], (fun _ -> Some dest)))
         stackMap
+    |> Map.values
+    |> Seq.fold (fun state chr -> state + string chr[0]) ""
+
 
 printfn $"%A{ans One}"
+
 printfn $"%A{ans Two}"
