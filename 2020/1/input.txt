@@ -1,5 +1,4 @@
-let raw =
-    """1946
+1946
 1859
 1654
 1806
@@ -198,8 +197,4 @@ let raw =
 1292
 853
 1879
-1652"""
-
-let rawArr = raw.Split("\r\n") |> Array.map int
-
-printfn "%A" rawArr
+1652
