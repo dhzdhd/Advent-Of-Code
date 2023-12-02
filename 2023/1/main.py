@@ -8,6 +8,16 @@ with open("2023/1/input.txt") as f:
     digits = map(lambda x: "".join(i for i in x if i.isdigit()), raw)
     res = ft.reduce(lambda st, x: st + int(x[0] + x[-1]), digits, 0)
 
+    ## One liner
+    res = __import__("functools").reduce(
+        lambda st, x: st + int(x[0] + x[-1]),
+        map(
+            lambda x: "".join(i for i in x if i.isdigit()),
+            open("2023/1/input.txt").readlines(),
+        ),
+        0,
+    )
+
     # Part 2
     num_d = list(
         enumerate(

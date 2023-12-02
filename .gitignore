@@ -2,3 +2,8 @@
 *.o
 *.hi
 *.vscode/
+
+# Gleam
+build/
+test/
+manifest.toml
