@@ -7,3 +7,6 @@
 build/
 test/
 manifest.toml
+
+# AoC inputs should not be uploaded
+input.txt
